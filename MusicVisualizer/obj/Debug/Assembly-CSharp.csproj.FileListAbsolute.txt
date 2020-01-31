@@ -1,0 +1,2 @@
+D:\Fun Projects\MusicVisualizer\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Fun Projects\MusicVisualizer\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
