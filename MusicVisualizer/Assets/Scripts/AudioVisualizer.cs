@@ -1,25 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent (typeof (AudioSource))]
 public class AudioVisualizer : MonoBehaviour {
 	AudioSource audiosource;
+
+    //Microphone input
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private bool useMicrophone;
+    [SerializeField] private string selectedDevice;
+    [SerializeField] private AudioMixerGroup mixerGroupMicrophone, mixerGroupMaster;
+
+    
+
+    //FFT values
     public static float[] samples = new float[512];
      float[] freqBand = new float[8];
      float[] bandBuffer = new float[8];
     float[] bufferDecrease = new float[8];
-
+   
     float[] freqBandHigh = new float[8];
+
+    //audio band values
     public static float[] audioBand = new float[8];
     public static float[] audioBandBuffer = new float[8];
 
+    //amplitude variables
     public static float amplitude, amplitudeBuffer;
     float amplitudeHigh;
 
 	// Use this for initialization
 	void Start () {
         audiosource = GetComponent<AudioSource>();
+        
+        //Microphone Input
+        if (useMicrophone)
+        {
+            if(Microphone.devices.Length > 0)
+            {
+                selectedDevice = Microphone.devices[0].ToString(); //Change this to select different devices
+                audiosource.outputAudioMixerGroup = mixerGroupMicrophone;
+                audiosource.clip = Microphone.Start(selectedDevice, true, 3599, AudioSettings.outputSampleRate);
+                audiosource.Play();
+            }
+            else
+            {
+                useMicrophone = false;
+            }
+        }else if (!useMicrophone)
+        {
+            audiosource.outputAudioMixerGroup = mixerGroupMaster;
+            audiosource.clip = audioClip;//example could put microphone not working audio here
+            audiosource.Play();
+        }
+        //audiosource.Play();
 	}
 	
 	// Update is called once per frame
