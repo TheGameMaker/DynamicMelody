@@ -34,6 +34,7 @@ public class AudioVisualizer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         audiosource = GetComponent<AudioSource>();
+        Application.runInBackground = true;
         
         //Microphone Input
         if (useMicrophone)
