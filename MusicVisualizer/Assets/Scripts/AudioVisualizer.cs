@@ -123,7 +123,8 @@ public class AudioVisualizer : MonoBehaviour {
 
     void MakeFrequencyBands()
     {
-        /*
+        /*\
+         *  testing file changes
          * 22050 / 512 = 43 hertz per sample
          * 
          * 20 - 60 hertz
