@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\LightAudio.cs" />
     <Compile Include="Assets\Scripts\Make512Cubes.cs" />
     <Compile Include="Assets\Scripts\paramCubes.cs" />
+    <Compile Include="Assets\Scripts\testscript.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/mac/Documents/MusicVisualizer/MusicVisualizer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

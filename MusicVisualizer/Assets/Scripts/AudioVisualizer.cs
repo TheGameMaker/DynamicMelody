@@ -13,11 +13,16 @@ public class AudioVisualizer : MonoBehaviour {
     [SerializeField] private string selectedDevice;
     [SerializeField] private AudioMixerGroup mixerGroupMicrophone, mixerGroupMaster;
 
-    
+
 
     //FFT values
+    public float[] _freqBandHighest = new float[8];
     public static float[] samples = new float[512];
-     float[] freqBand = new float[8];
+    public static float[] _samplesLeft = new float[512];
+
+    public static float[] _samplesRight = new float[512];
+
+    float[] freqBand = new float[8];
      float[] bandBuffer = new float[8];
     float[] bufferDecrease = new float[8];
    
@@ -30,11 +35,16 @@ public class AudioVisualizer : MonoBehaviour {
     //amplitude variables
     public static float amplitude, amplitudeBuffer;
     float amplitudeHigh;
+    public float _audioProfile;
+
+    public enum _channel { Stereo, Left, Right};
+    public _channel channel = new _channel();
 
 	// Use this for initialization
 	void Start () {
         audiosource = GetComponent<AudioSource>();
         Application.runInBackground = true;
+        AudioProfile(_audioProfile);
         
         //Microphone Input
         if (useMicrophone)
@@ -101,6 +111,9 @@ public class AudioVisualizer : MonoBehaviour {
     void GetSpectrumAudioSource()
     {
         audiosource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+        audiosource.GetSpectrumData(_samplesLeft, 0, FFTWindow.Blackman);
+        audiosource.GetSpectrumData(_samplesRight, 1, FFTWindow.Blackman);
+
     }
 
     void BandBuffer()
@@ -120,11 +133,19 @@ public class AudioVisualizer : MonoBehaviour {
             }
         }
     }
+    void AudioProfile(float audioProfile)
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            freqBandHigh[i] = audioProfile;
+        }
 
+
+    }
     void MakeFrequencyBands()
     {
         /*\
-         *  testing file changes
+         *  testing file changesaudi
          * 22050 / 512 = 43 hertz per sample
          * 
          * 20 - 60 hertz
@@ -160,8 +181,21 @@ public class AudioVisualizer : MonoBehaviour {
             }
             for (int j = 0; j < sampleCount; j++)
             {
-                average += samples[count] * (count + 1);
-                count++;
+                if (channel == _channel.Stereo)
+                {
+                    average += samples[count] + _samplesLeft[count] + _samplesRight[count] * (count + 1);
+                    count++;
+                }
+                if (channel == _channel.Left)
+                {
+                    average += samples[count] + _samplesLeft[count] * (count + 1);
+                    count++;
+                }
+                if (channel == _channel.Right)
+                {
+                    average += samples[count] + _samplesRight[count] * (count + 1);
+                    count++;
+                }
             }
 
             average /= count;
