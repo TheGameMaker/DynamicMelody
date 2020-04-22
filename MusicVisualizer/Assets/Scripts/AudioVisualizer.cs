@@ -13,12 +13,15 @@ public class AudioVisualizer : MonoBehaviour {
     [SerializeField] private string selectedDevice;
     [SerializeField] private AudioMixerGroup mixerGroupMicrophone, mixerGroupMaster;
 
-    
+
 
     //FFT values
-    public static float[] samples = new float[512];
-     float[] freqBand = new float[8];
-     float[] bandBuffer = new float[8];
+    public float[] freqBandHighest = new float[8];
+  //  public static float[] samples = new float[512];
+    public static float[] samplesLeft = new float[512];
+    public static float[] samplesRight = new float[512];
+    float[] freqBand = new float[8];
+    float[] bandBuffer = new float[8];
     float[] bufferDecrease = new float[8];
    
     float[] freqBandHigh = new float[8];
@@ -30,11 +33,16 @@ public class AudioVisualizer : MonoBehaviour {
     //amplitude variables
     public static float amplitude, amplitudeBuffer;
     float amplitudeHigh;
+    public float audioProfile;
+
+    public enum channel { Stereo, Left, Right };
+    public channel Channel = new channel();
 
 	// Use this for initialization
 	void Start () {
         audiosource = GetComponent<AudioSource>();
         Application.runInBackground = true;
+        AudioProfile(audioProfile);
         
         //Microphone Input
         if (useMicrophone)
@@ -43,7 +51,7 @@ public class AudioVisualizer : MonoBehaviour {
             {
                 selectedDevice = Microphone.devices[0].ToString(); //Change this to select different devices
                 audiosource.outputAudioMixerGroup = mixerGroupMicrophone;
-                audiosource.clip = Microphone.Start(selectedDevice, true, 3599, AudioSettings.outputSampleRate);
+                audiosource.clip = Microphone.Start(selectedDevice, true, 3500, AudioSettings.outputSampleRate);
                 audiosource.Play();
             }
             else
@@ -100,7 +108,9 @@ public class AudioVisualizer : MonoBehaviour {
 
     void GetSpectrumAudioSource()
     {
-        audiosource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+       // audiosource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+        audiosource.GetSpectrumData(samplesLeft, 0, FFTWindow.Blackman);
+        audiosource.GetSpectrumData(samplesRight, 1, FFTWindow.Blackman);
     }
 
     void BandBuffer()
@@ -118,6 +128,14 @@ public class AudioVisualizer : MonoBehaviour {
                 bandBuffer[i] -= bufferDecrease[i];
                 bufferDecrease[i] *= 1.2f;
             }
+        }
+    }
+
+    void AudioProfile(float audioProfile)
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            freqBandHigh[i] = audioProfile;
         }
     }
 
@@ -159,8 +177,21 @@ public class AudioVisualizer : MonoBehaviour {
             }
             for (int j = 0; j < sampleCount; j++)
             {
-                average += samples[count] * (count + 1);
-                count++;
+                if (Channel == channel.Stereo)
+                {
+                    average += samplesLeft[count] + samplesRight[count] * (count + 1);
+                    count++;
+                }
+                if (Channel == channel.Left)
+                {
+                    average += samplesLeft[count] * (count + 1);
+                    count++;
+                }
+                if (Channel == channel.Right)
+                {
+                    average += samplesRight[count] * (count + 1);
+                    count++;
+                }
             }
 
             average /= count;

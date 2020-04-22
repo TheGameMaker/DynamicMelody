@@ -307,6 +307,17 @@ MonoBehaviour:
   mixerGroupMicrophone: {fileID: -5694827978051893700, guid: c590c7d82ef0b4148b264b5cb53052ba,
     type: 2}
   mixerGroupMaster: {fileID: 24300002, guid: c590c7d82ef0b4148b264b5cb53052ba, type: 2}
+  freqBandHighest:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  audioProfile: 3
+  Channel: 0
 --- !u!82 &192294464
 AudioSource:
   m_ObjectHideFlags: 0
