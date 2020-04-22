@@ -28,7 +28,7 @@ public class Make512Cubes : MonoBehaviour {
         {
             if(sampleCube != null)
             {
-                sampleCube[i].transform.localScale = new Vector3(10, (AudioVisualizer.samples[i] * maxScale) + 2, 10);
+                sampleCube[i].transform.localScale = new Vector3(10, ((AudioVisualizer.samplesLeft[i] + AudioVisualizer.samplesRight[i]) * maxScale) + 2, 10);
             }
         }
 	}
