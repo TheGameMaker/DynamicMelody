@@ -16,7 +16,7 @@ public class AudioVisualizer : MonoBehaviour {
 
 
     //FFT values
-    public float[] freqBandHighest = new float[8];
+    public float[] freqBandHighest = new float[8]; //might not need
   //  public static float[] samples = new float[512];
     public static float[] samplesLeft = new float[512];
     public static float[] samplesRight = new float[512];
@@ -39,7 +39,7 @@ public class AudioVisualizer : MonoBehaviour {
     public channel Channel = new channel();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         audiosource = GetComponent<AudioSource>();
         Application.runInBackground = true;
         AudioProfile(audioProfile);
@@ -104,6 +104,7 @@ public class AudioVisualizer : MonoBehaviour {
             audioBand[i] = (freqBand[i] / freqBandHigh[i]);
             audioBandBuffer[i] = (bandBuffer[i] / freqBandHigh[i]);
         }
+        //freqBandHighest = freqBandHigh;
     }
 
     void GetSpectrumAudioSource()
