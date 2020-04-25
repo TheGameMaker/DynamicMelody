@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\LightAudio.cs" />
     <Compile Include="Assets\Scripts\Make512Cubes.cs" />
     <Compile Include="Assets\Scripts\NoiseFlowfield.cs" />
+    <Compile Include="Assets\Scripts\OptionsButtons.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\SettingsPlayerPref.cs" />
     <Compile Include="Assets\Scripts\paramCubes.cs" />
