@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 [RequireComponent (typeof (AudioSource))]
 public class AudioVisualizer : MonoBehaviour {
@@ -9,7 +10,7 @@ public class AudioVisualizer : MonoBehaviour {
 
     //Microphone input
     [SerializeField] private AudioClip audioClip;
-    [SerializeField] private bool useMicrophone;
+    public bool useMicrophone;
     [SerializeField] private string selectedDevice;
     [SerializeField] private AudioMixerGroup mixerGroupMicrophone, mixerGroupMaster;
 
@@ -43,29 +44,37 @@ public class AudioVisualizer : MonoBehaviour {
         audiosource = GetComponent<AudioSource>();
         Application.runInBackground = true;
         AudioProfile(audioProfile);
-        
+        setSound(useMicrophone);
+    }
+
+    public void setSound(bool useMic)
+    {
         //Microphone Input
+        useMicrophone = useMic;
+        audiosource.Stop();
+        Destroy(audiosource.clip);
+
         if (useMicrophone)
         {
-            if(Microphone.devices.Length > 0)
+            if (Microphone.devices.Length > 0)
             {
                 selectedDevice = Microphone.devices[0].ToString(); //Change this to select different devices
                 audiosource.outputAudioMixerGroup = mixerGroupMicrophone;
-                audiosource.clip = Microphone.Start(selectedDevice, true, 3500, AudioSettings.outputSampleRate);
-                audiosource.Play();
+                audiosource.clip = Microphone.Start(selectedDevice, false, 3500, AudioSettings.outputSampleRate);
             }
             else
             {
                 useMicrophone = false;
             }
-        }else if (!useMicrophone)
+        }
+        else if (!useMicrophone)
         {
+            Microphone.End(selectedDevice);
             audiosource.outputAudioMixerGroup = mixerGroupMaster;
             audiosource.clip = audioClip;//example could put microphone not working audio here
-            audiosource.Play();
         }
-        //audiosource.Play();
-	}
+        audiosource.Play();
+    }
 	
 	// Update is called once per frame
 	void Update () {
