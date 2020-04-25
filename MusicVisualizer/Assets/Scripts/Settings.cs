@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Option
 {
+    Version,
     Microphone, //bool
                 //add other options here.
 }
