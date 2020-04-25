@@ -66,17 +66,15 @@ public class AudioVisualizer : MonoBehaviour {
                 audiosource.outputAudioMixerGroup = mixerGroupMicrophone;
                 audiosource.clip = Microphone.Start(selectedDevice, false, 3500, AudioSettings.outputSampleRate);
             }
-            /* this does nothing?
-            else
+            else//if  no microphone devices
             {
                 useMicrophone = false;
-            }*/
+            }
         }
         else if (!useMicrophone)
         {
 
-            Microphone.End(selectedDevice);
-            
+            Microphone.End(selectedDevice);     
             audiosource.outputAudioMixerGroup = mixerGroupMaster;
             audiosource.clip = audioClip;//example could put microphone not working audio here
         }
