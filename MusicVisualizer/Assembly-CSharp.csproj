@@ -68,8 +68,10 @@
     <Compile Include="Assets\Scripts\FastNoise.cs" />
     <Compile Include="Assets\Scripts\FlowfieldParticle.cs" />
     <Compile Include="Assets\Scripts\LightAudio.cs" />
+    <Compile Include="Assets\Scripts\LoadSceneButton.cs" />
     <Compile Include="Assets\Scripts\Make512Cubes.cs" />
     <Compile Include="Assets\Scripts\NoiseFlowfield.cs" />
+    <Compile Include="Assets\Scripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\SettingsPlayerPref.cs" />
     <Compile Include="Assets\Scripts\paramCubes.cs" />
