@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 24521
+  controlID: 2188
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 24522
+  controlID: 2189
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 24523
+  controlID: 2162
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,8 +183,8 @@ MonoBehaviour:
     y: 0
     width: 962
     height: 669
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 6}
@@ -352,8 +352,8 @@ MonoBehaviour:
     y: 0
     width: 405
     height: 669
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
@@ -390,7 +390,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 02eff6ff2871f8ff12b0f8ff7c07fcff8c07fcff9807fcff40fbffffde3700001638000038380000e8380000
+      m_ExpandedIDs: 048effffdef5ffff42f6fffff2f9ffff40fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -433,8 +433,8 @@ MonoBehaviour:
     y: 669
     width: 1367
     height: 278
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -481,20 +481,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 68
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: 68
   m_LastProjectPath: D:\github\MusicVisualizer\MusicVisualizer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f8390000
-    m_LastClickedID: 14840
-    m_ExpandedIDs: 00000000f8390000fa390000fc390000fe39000000ca9a3b
+    m_SelectedIDs: c63a0000
+    m_LastClickedID: 15046
+    m_ExpandedIDs: 00000000b03a0000b23a0000b43a0000b63a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -522,7 +522,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f8390000fa390000fc390000fe39000000ca9a3b
+    m_ExpandedIDs: 00000000b03a0000b23a0000b43a0000b63a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -547,9 +547,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 38380000
-    m_LastClickedInstanceID: 14392
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 0c3d0000
+    m_LastClickedInstanceID: 15628
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000050450000ee36000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -785,7 +785,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 14392
+  m_LastInspectedObjectInstanceID: 15628
   m_LastVerticalScrollValue: 0
 --- !u!114 &16
 MonoBehaviour:
