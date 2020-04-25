@@ -51,6 +51,7 @@ public class SettingsPlayerPref : Settings
     
     public void defaultSettings()
     {
-        PlayerPrefs.SetInt(Enum.GetName(typeof(Option), 0), 1); //initialize microphone option to true.
+        setOptionInt(Option.Version, 1);
+        setOptionBool(Option.Microphone, true);
     }
 }

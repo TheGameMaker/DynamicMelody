@@ -14,7 +14,7 @@ public class AudioVisualizer : MonoBehaviour {
     [SerializeField] private string selectedDevice;
     [SerializeField] private AudioMixerGroup mixerGroupMicrophone, mixerGroupMaster;
 
-
+    public Settings settings;
 
     //FFT values
     public float[] freqBandHighest = new float[8]; //might not need
@@ -44,7 +44,10 @@ public class AudioVisualizer : MonoBehaviour {
         audiosource = GetComponent<AudioSource>();
         Application.runInBackground = true;
         AudioProfile(audioProfile);
-        setSound(useMicrophone);
+        settings = new SettingsPlayerPref();
+        settings.defaultSettings();
+        setSound(settings.getOptionBool(Option.Microphone));
+        //setSound(useMicrophone);
     }
 
     public void setSound(bool useMic)
@@ -52,24 +55,28 @@ public class AudioVisualizer : MonoBehaviour {
         //Microphone Input
         useMicrophone = useMic;
         audiosource.Stop();
-        Destroy(audiosource.clip);
-
+        //Destroy(audiosource.clip);
+        resetAmplitude();
         if (useMicrophone)
         {
             if (Microphone.devices.Length > 0)
             {
+                
                 selectedDevice = Microphone.devices[0].ToString(); //Change this to select different devices
                 audiosource.outputAudioMixerGroup = mixerGroupMicrophone;
                 audiosource.clip = Microphone.Start(selectedDevice, false, 3500, AudioSettings.outputSampleRate);
             }
+            /* this does nothing?
             else
             {
                 useMicrophone = false;
-            }
+            }*/
         }
         else if (!useMicrophone)
         {
+
             Microphone.End(selectedDevice);
+            
             audiosource.outputAudioMixerGroup = mixerGroupMaster;
             audiosource.clip = audioClip;//example could put microphone not working audio here
         }
@@ -84,6 +91,23 @@ public class AudioVisualizer : MonoBehaviour {
         CreateAudioBands();
         GetAmplitude();
 	}
+
+    void resetAmplitude()
+    {
+        Debug.Log("reset");
+        amplitudeHigh = -2147483648;
+        samplesLeft = new float[512];
+        samplesRight = new float[512];
+        freqBand = new float[8];
+        bandBuffer = new float[8];
+        bufferDecrease = new float[8];
+
+        freqBandHigh = new float[8];
+
+    //audio band values
+        audioBand = new float[8];
+        audioBandBuffer = new float[8];
+    }
 
     void GetAmplitude()
     {
