@@ -74,6 +74,17 @@
     <Compile Include="Assets\Scripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\SettingsPlayerPref.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\AudioVisualizationProfile.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\AudioVisualizationStrategy.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\BasicSpectrumProvder.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\ISpectrumProvider.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\LineSpectrum.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\ScalingStrategy.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\SpectrumBase.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\SpectrumSmoother.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\WasapiAudio.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\WasapiAudioSource.cs" />
+    <Compile Include="Assets\Scripts\WasapiAudio\WasapiCaptureType.cs" />
     <Compile Include="Assets\Scripts\paramCubes.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/github/MusicVisualizer/MusicVisualizer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -314,6 +325,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>D:/Program Files (x86)/Unity/Hub/Editor/2019.3.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="CSCore">
+      <HintPath>D:/github/MusicVisualizer/MusicVisualizer/Assets/Plugins/CSCore.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/github/MusicVisualizer/MusicVisualizer/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
