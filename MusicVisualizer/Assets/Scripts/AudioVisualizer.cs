@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using Assets.Scripts.WasapiAudio;
 
 [RequireComponent (typeof (AudioSource))]
 public class AudioVisualizer : MonoBehaviour {
@@ -17,8 +18,13 @@ public class AudioVisualizer : MonoBehaviour {
 
     public Settings settings;
 
+    public bool streamAudio;
+    WasapiAudioSource wasapiSource;
+    AudioVisualizationProfile profile;
+    AudioVisualizationStrategy strategy = AudioVisualizationStrategy.Raw;
+
     //FFT values
-    public float[] freqBandHighest = new float[8]; //might not need
+   // public float[] freqBandHighest = new float[8]; //might not need
   //  public static float[] samples = new float[512];
     public static float[] samplesLeft = new float[512];
     public static float[] samplesRight = new float[512];
@@ -43,11 +49,21 @@ public class AudioVisualizer : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         audiosource = GetComponent<AudioSource>();
+        wasapiSource = GetComponent<WasapiAudioSource>();
         Application.runInBackground = true;
         AudioProfile(audioProfile);
         settings = new SettingsPlayerPref();
         settings.defaultSettings();
-        setSound(settings.getOptionBool(Option.Microphone));
+        if (streamAudio)
+        {
+            wasapiSource.Awake();
+            Debug.Log("Got Here");
+        }
+        else
+        {
+            setSound(settings.getOptionBool(Option.Microphone));
+        }
+        
         //setSound(useMicrophone);
     }
 
@@ -99,7 +115,14 @@ public class AudioVisualizer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetSpectrumAudioSource();
+        if (streamAudio)
+        {
+            GetSpectrumStream();
+        }
+        else
+        {
+            GetSpectrumAudioSource();
+        }
         MakeFrequencyBands();
         BandBuffer();
         CreateAudioBands();
@@ -150,10 +173,15 @@ public class AudioVisualizer : MonoBehaviour {
             }
             audioBand[i] = (freqBand[i] / freqBandHigh[i]);
             audioBandBuffer[i] = (bandBuffer[i] / freqBandHigh[i]);
+            
         }
         //freqBandHighest = freqBandHigh;
     }
 
+    void GetSpectrumStream()
+    {
+        samplesLeft = wasapiSource.GetSpectrumData(strategy, false, profile);
+    }
     void GetSpectrumAudioSource()
     {
        // audiosource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
