@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -50,6 +51,20 @@ public class AudioVisualizer : MonoBehaviour {
         //setSound(useMicrophone);
     }
 
+    public void setClip()
+    {
+        string p = EditorUtility.OpenFilePanel("Select WAV file", "", "wav");
+        WWW audioLoader = new WWW("file://" + p);
+        while (!audioLoader.isDone)
+            System.Threading.Thread.Sleep(100);
+
+        Debug.Log(audioLoader.GetAudioClip().name);
+        audioClip = audioLoader.GetAudioClip();
+        Debug.Log(audioClip);
+        setSound(useMicrophone);
+      
+    }
+
     public void setSound(bool useMic)
     {
         //Microphone Input
@@ -78,6 +93,7 @@ public class AudioVisualizer : MonoBehaviour {
             audiosource.outputAudioMixerGroup = mixerGroupMaster;
             audiosource.clip = audioClip;//example could put microphone not working audio here
         }
+        settings.setOptionBool(Option.Microphone, useMicrophone);
         audiosource.Play();
     }
 	
