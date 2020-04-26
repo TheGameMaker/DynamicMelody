@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FillMicrophoneList.cs" />
     <Compile Include="Assets\Scripts\AudioFlowfield.cs" />
     <Compile Include="Assets\Scripts\AudioVisualizer.cs" />
     <Compile Include="Assets\Scripts\FastNoise.cs" />

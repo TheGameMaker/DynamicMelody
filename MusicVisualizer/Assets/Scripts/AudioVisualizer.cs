@@ -13,7 +13,7 @@ public class AudioVisualizer : MonoBehaviour {
     //Microphone input
     [SerializeField] private AudioClip audioClip;
     public bool useMicrophone;
-    [SerializeField] private string selectedDevice;
+    public static string selectedDevice;
     [SerializeField] private AudioMixerGroup mixerGroupMicrophone, mixerGroupMaster;
 
     public Settings settings;
