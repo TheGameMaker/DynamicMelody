@@ -56,7 +56,8 @@ public class AudioVisualizer : MonoBehaviour {
         settings.defaultSettings();
         if (streamAudio)
         {
-            wasapiSource.Awake();
+            //wasapiSource.Awake();
+            streamSound(streamAudio);
             Debug.Log("Got Here");
         }
         else
@@ -88,7 +89,7 @@ public class AudioVisualizer : MonoBehaviour {
         audiosource.Stop();
         //Destroy(audiosource.clip);
         resetAmplitude();
-        if (useMicrophone)
+        if (useMicrophone && !streamAudio)
         {
             if (Microphone.devices.Length > 0)
             {
@@ -96,21 +97,30 @@ public class AudioVisualizer : MonoBehaviour {
                 selectedDevice = Microphone.devices[0].ToString(); //Change this to select different devices
                 audiosource.outputAudioMixerGroup = mixerGroupMicrophone;
                 audiosource.clip = Microphone.Start(selectedDevice, false, 3500, AudioSettings.outputSampleRate);
+                audiosource.Play();
             }
             else//if  no microphone devices
             {
                 useMicrophone = false;
             }
         }
-        else if (!useMicrophone)
+        else if (!useMicrophone && !streamAudio)
         {
 
             Microphone.End(selectedDevice);     
             audiosource.outputAudioMixerGroup = mixerGroupMaster;
             audiosource.clip = audioClip;//example could put microphone not working audio here
+            audiosource.Play();
         }
         settings.setOptionBool(Option.Microphone, useMicrophone);
-        audiosource.Play();
+        //audiosource.Play();
+    }
+
+    public void streamSound(bool stream)
+    {
+        audiosource.Stop();
+        streamAudio = stream;
+        wasapiSource.Awake();
     }
 	
 	// Update is called once per frame
