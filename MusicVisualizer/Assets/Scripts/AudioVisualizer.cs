@@ -28,19 +28,28 @@ public class AudioVisualizer : MonoBehaviour {
   //  public static float[] samples = new float[512];
     public static float[] samplesLeft = new float[512];
     public static float[] samplesRight = new float[512];
+
     float[] freqBand = new float[8];
     float[] bandBuffer = new float[8];
-    float[] bufferDecrease = new float[8];
-   
+    float[] bufferDecrease = new float[8];  
     float[] freqBandHigh = new float[8];
+
+    public bool use64AudioBands;
+    float[] freqBand64 = new float[64];
+    float[] bandBuffer64 = new float[64];
+    float[] bufferDecrease64 = new float[64];
+    float[] freqBandHighest64 = new float[64];
 
     //audio band values
     public static float[] audioBand = new float[8];
     public static float[] audioBandBuffer = new float[8];
 
+    public static float[] audioBand64 = new float[64];
+    public static float[] audioBandBuffer64 = new float[64];
+
     //amplitude variables
     public static float amplitude, amplitudeBuffer;
-    float amplitudeHigh;
+    public static float amplitudeHigh;
     public float audioProfile;
 
     public enum channel { Stereo, Left, Right };
@@ -52,6 +61,7 @@ public class AudioVisualizer : MonoBehaviour {
         wasapiSource = GetComponent<WasapiAudioSource>();
         Application.runInBackground = true;
         AudioProfile(audioProfile);
+        AudioProfile64(audioProfile);
         settings = new SettingsPlayerPref();
         settings.defaultSettings();
         if (streamAudio)
@@ -133,12 +143,23 @@ public class AudioVisualizer : MonoBehaviour {
         {
             GetSpectrumAudioSource();
         }
-        MakeFrequencyBands();
-        BandBuffer();
-        CreateAudioBands();
-        GetAmplitude();
+        if (use64AudioBands)
+        {
+            MakeFrequencyBands64();
+            BandBuffer64();
+            CreateAudioBands64();
+            GetAmplitude64();
+        }
+        else
+        {
+            MakeFrequencyBands();
+            BandBuffer();
+            CreateAudioBands();
+            GetAmplitude();
+        }
 	}
 
+    //not needed but helps show the microphone bug for now....
     void resetAmplitude()
     {
         Debug.Log("reset");
@@ -173,6 +194,23 @@ public class AudioVisualizer : MonoBehaviour {
         amplitudeBuffer = currentAmplitudeBuffer / amplitudeHigh;
     }
 
+    void GetAmplitude64()
+    {
+        float currentAmplitude = 0;
+        float currentAmplitudeBuffer = 0;
+        for (int i = 0; i < 64; i++)
+        {
+            currentAmplitude += audioBand64[i];
+            currentAmplitudeBuffer += audioBandBuffer64[i];
+        }
+        if (currentAmplitude > amplitudeHigh)
+        {
+            amplitudeHigh = currentAmplitude;
+        }
+        amplitude = currentAmplitude / amplitudeHigh;
+        amplitudeBuffer = currentAmplitudeBuffer / amplitudeHigh;
+    }
+
     void CreateAudioBands()
     {
         for(int i = 0; i < 8; i++)
@@ -184,6 +222,20 @@ public class AudioVisualizer : MonoBehaviour {
             audioBand[i] = (freqBand[i] / freqBandHigh[i]);
             audioBandBuffer[i] = (bandBuffer[i] / freqBandHigh[i]);
             
+        }
+        //freqBandHighest = freqBandHigh;
+    }
+
+    void CreateAudioBands64()
+    {
+        for (int i = 0; i < 64; i++)
+        {
+            if (freqBand64[i] > freqBandHighest64[i])
+            {
+                freqBandHighest64[i] = freqBand64[i];
+            }
+            audioBand64[i] = (freqBand64[i] / freqBandHighest64[i]);
+            audioBandBuffer64[i] = (bandBuffer64[i] / freqBandHighest64[i]);
         }
         //freqBandHighest = freqBandHigh;
     }
@@ -217,11 +269,37 @@ public class AudioVisualizer : MonoBehaviour {
         }
     }
 
+    void BandBuffer64()
+    {
+        for (int i = 0; i < 64; i++)
+        {
+            if (freqBand64[i] > bandBuffer64[i])
+            {
+                bandBuffer64[i] = freqBand64[i];
+                bufferDecrease64[i] = 0.005f;
+            }
+
+            if (freqBand64[i] < bandBuffer64[i])
+            {
+                bandBuffer64[i] -= bufferDecrease64[i];
+                bufferDecrease64[i] *= 1.2f;
+            }
+        }
+    }
+
     void AudioProfile(float audioProfile)
     {
         for(int i = 0; i < 8; i++)
         {
             freqBandHigh[i] = audioProfile;
+        }
+    }
+
+    void AudioProfile64(float audioProfile)
+    {
+        for (int i = 0; i < 64; i++)
+        {
+            freqBandHighest64[i] = audioProfile;
         }
     }
 
@@ -282,6 +360,52 @@ public class AudioVisualizer : MonoBehaviour {
 
             average /= count;
             freqBand[i] = average * 10;
+        }
+    }
+
+    void MakeFrequencyBands64()
+    {
+
+        int count = 0;
+        int sampleCount = 1;
+        int power = 0;
+
+        for (int i = 0; i < 64; i++)
+        {
+            float average = 0;
+            // int sampleCount = (int)Mathf.Pow(2, i) * 2;
+
+            //adds 2 to the end
+            if (i == 16 || i == 32 || i == 40 || i == 48 || i == 56)
+            {
+                power++;
+                sampleCount = (int)Mathf.Pow(2, power);
+                if (power == 3)
+                {
+                    sampleCount -= 2;
+                }
+            }
+            for (int j = 0; j < sampleCount; j++)
+            {
+                if (Channel == channel.Stereo)
+                {
+                    average += samplesLeft[count] + samplesRight[count] * (count + 1);
+                    count++;
+                }
+                if (Channel == channel.Left)
+                {
+                    average += samplesLeft[count] * (count + 1);
+                    count++;
+                }
+                if (Channel == channel.Right)
+                {
+                    average += samplesRight[count] * (count + 1);
+                    count++;
+                }
+            }
+
+            average /= count;
+            freqBand64[i] = average * 80;
         }
     }
 }

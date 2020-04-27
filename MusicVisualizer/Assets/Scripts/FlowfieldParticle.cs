@@ -10,7 +10,7 @@ public class FlowfieldParticle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioBand = (int)Random.Range(0, 7);
+        audioBand = (int)Random.Range(0, 63);
     }
 
     // Update is called once per frame

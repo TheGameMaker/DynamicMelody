@@ -29,13 +29,13 @@ public class AudioFlowfield : MonoBehaviour
     void Start()
     {
         noiseFlowfield = GetComponent<NoiseFlowfield>();
-        audioMaterials = new Material[8];
-        color1 = new Color[8];
-        color2 = new Color[8];
-        for(int i = 0; i < 8; i++)
+        audioMaterials = new Material[64];
+        color1 = new Color[64];
+        color2 = new Color[64];
+        for(int i = 0; i < 64; i++)
         {
-            color1[i] = gradient1.Evaluate((1f / 8f) * i);
-            color2[i] = gradient2.Evaluate((1f / 8f) * i);
+            color1[i] = gradient1.Evaluate((1f / 64f) * i);
+            color2[i] = gradient2.Evaluate((1f / 64f) * i);
             audioMaterials[i] = new Material(material);
         }
         int pid = 0;
@@ -58,17 +58,17 @@ public class AudioFlowfield : MonoBehaviour
         {
             if (useScale)
             {
-                float scale = Mathf.Lerp(scaleMinMax.x, scaleMinMax.y, AudioVisualizer.audioBandBuffer[noiseFlowfield.particles[i].audioBand]);
+                float scale = Mathf.Lerp(scaleMinMax.x, scaleMinMax.y, AudioVisualizer.audioBandBuffer64[noiseFlowfield.particles[i].audioBand]);
                 noiseFlowfield.particles[i].scale = scale;
             }
         }
-        for(int j = 0; j < 8; j++)
+        for(int j = 0; j < 64; j++)
         {
             if (useColor1)
             {
-                if(AudioVisualizer.audioBandBuffer[j] > colorThreshold1)
+                if(AudioVisualizer.audioBandBuffer64[j] > colorThreshold1)
                 {
-                    audioMaterials[j].SetColor(colorName1, color1[j] * AudioVisualizer.audioBandBuffer[j] * colorMultiplier1);
+                    audioMaterials[j].SetColor(colorName1, color1[j] * AudioVisualizer.audioBandBuffer64[j] * colorMultiplier1);
                 }
                 else
                 {
@@ -77,9 +77,9 @@ public class AudioFlowfield : MonoBehaviour
             }
             if (useColor2)
             {
-                if (AudioVisualizer.audioBandBuffer[j] > colorThreshold2)
+                if (AudioVisualizer.audioBandBuffer64[j] > colorThreshold2)
                 {
-                    audioMaterials[j].SetColor(colorName2, color2[j] * AudioVisualizer.audioBandBuffer[j] * colorMultiplier2);
+                    audioMaterials[j].SetColor(colorName2, color2[j] * AudioVisualizer.audioBandBuffer64[j] * colorMultiplier2);
                 }
                 else
                 {
