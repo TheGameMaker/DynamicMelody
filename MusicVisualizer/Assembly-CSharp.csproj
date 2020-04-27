@@ -63,7 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CircleAudio.cs" />
     <Compile Include="Assets\FillMicrophoneList.cs" />
+    <Compile Include="Assets\InstantiateCircle.cs" />
     <Compile Include="Assets\Scripts\AudioFlowfield.cs" />
     <Compile Include="Assets\Scripts\AudioVisualizer.cs" />
     <Compile Include="Assets\Scripts\FastNoise.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Assets\Scripts\WasapiAudio\WasapiAudioSource.cs" />
     <Compile Include="Assets\Scripts\WasapiAudio\WasapiCaptureType.cs" />
     <Compile Include="Assets\Scripts\paramCubes.cs" />
+    <Compile Include="Assets\addDisplays.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/github/MusicVisualizer/MusicVisualizer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
