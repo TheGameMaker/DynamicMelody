@@ -6,7 +6,7 @@ namespace Assets.Scripts.WasapiAudio
     public class AudioVisualizationProfile : ScriptableObject
     {
         // Inspector Fields
-        public AnimationCurve ScaleCurve;
+        public AnimationCurve ScaleCurve  = new AnimationCurve();
         [Range(1, 50)]
         public int AudioSmoothingIterations = 5;
         [Range(1, 2)]

@@ -2591,8 +2591,9 @@ MonoBehaviour:
   audioSource: {fileID: 192294462}
   audioClip: {fileID: 0}
   useMicrophone: 1
-  mixerGroupMicrophone: {fileID: 0}
-  mixerGroupMaster: {fileID: 0}
+  mixerGroupMicrophone: {fileID: -5694827978051893700, guid: c590c7d82ef0b4148b264b5cb53052ba,
+    type: 2}
+  mixerGroupMaster: {fileID: 24300002, guid: c590c7d82ef0b4148b264b5cb53052ba, type: 2}
   streamAudio: 0
   use64AudioBands: 0
   audioBand:

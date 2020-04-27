@@ -1800,12 +1800,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36790e7a39c59fc4586896024dee7e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 308430489}
   audioClip: {fileID: 8300000, guid: 1b0533147f75a39458e542f20bbe11d0, type: 3}
   useMicrophone: 1
   mixerGroupMicrophone: {fileID: -5694827978051893700, guid: c590c7d82ef0b4148b264b5cb53052ba,
     type: 2}
   mixerGroupMaster: {fileID: 24300002, guid: c590c7d82ef0b4148b264b5cb53052ba, type: 2}
   streamAudio: 0
+  use64AudioBands: 0
+  audioBand:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  audioBandBuffer:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   audioProfile: 1
   Channel: 0
 --- !u!82 &308430491
