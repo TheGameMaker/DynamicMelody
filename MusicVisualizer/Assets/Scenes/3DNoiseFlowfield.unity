@@ -661,10 +661,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useSpeed: 1
-  moveSpeedMinMax: {x: 0, y: 10}
+  moveSpeedMinMax: {x: 0, y: 20}
   rotateSpeedMinMax: {x: 0, y: 300}
   useScale: 1
-  scaleMinMax: {x: 0, y: 3}
+  scaleMinMax: {x: 0, y: 5}
   material: {fileID: 2100000, guid: 9a4f8049b1d0832419dad00baf1f52a4, type: 2}
   useColor1: 1
   useColor2: 1
@@ -728,9 +728,9 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  colorThreshold1: 0
-  colorThreshold2: 0.5
-  colorMultiplier1: 2
+  colorThreshold1: 0.5
+  colorThreshold2: 0
+  colorMultiplier1: 1
   colorMultiplier2: 2
 --- !u!1 &78350853
 GameObject:
@@ -10504,7 +10504,8 @@ MonoBehaviour:
     type: 2}
   mixerGroupMaster: {fileID: 24300002, guid: c590c7d82ef0b4148b264b5cb53052ba, type: 2}
   streamAudio: 0
-  audioProfile: 2
+  use64AudioBands: 1
+  audioProfile: 1
   Channel: 0
 --- !u!82 &1181243864
 AudioSource:
