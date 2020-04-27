@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3Dcubes.unity
     guid: 6cdb0dfbb63400146abc8ad69ce41057
+  - enabled: 1
+    path: Assets/Scenes/circle.unity
+    guid: e078d3d0552d13b49810adc3dcc6e578
   m_configObjects: {}
