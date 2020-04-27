@@ -6,9 +6,10 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using Assets.Scripts.WasapiAudio;
 
-[RequireComponent (typeof (AudioSource))]
+//[RequireComponent (typeof (AudioSource))]
 public class AudioVisualizer : MonoBehaviour {
 	AudioSource audiosource;
+    public GameObject audioSource;
 
     //Microphone input
     [SerializeField] private AudioClip audioClip;
@@ -41,8 +42,8 @@ public class AudioVisualizer : MonoBehaviour {
     float[] freqBandHighest64 = new float[64];
 
     //audio band values
-    public static float[] audioBand = new float[8];
-    public static float[] audioBandBuffer = new float[8];
+    public float[] audioBand = new float[8];
+    public float[] audioBandBuffer = new float[8];
 
     public static float[] audioBand64 = new float[64];
     public static float[] audioBandBuffer64 = new float[64];
@@ -57,7 +58,7 @@ public class AudioVisualizer : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        audiosource = GetComponent<AudioSource>();
+        audiosource = audioSource.GetComponent<AudioSource>();
         wasapiSource = GetComponent<WasapiAudioSource>();
         Application.runInBackground = true;
         AudioProfile(audioProfile);

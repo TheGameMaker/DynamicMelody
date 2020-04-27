@@ -250,6 +250,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1001 &131827360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -852,7 +854,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 192294463}
         m_MethodName: setSound
         m_Mode: 0
         m_Arguments:
@@ -1120,14 +1122,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36790e7a39c59fc4586896024dee7e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 9739d9e6864c79645bb878a143cf0c9e, type: 3}
+  audioSource: {fileID: 192294462}
+  audioClip: {fileID: 8300000, guid: 929e96eb533ebfa4298c5881fe4bdcf5, type: 3}
   useMicrophone: 1
   mixerGroupMicrophone: {fileID: -5694827978051893700, guid: c590c7d82ef0b4148b264b5cb53052ba,
     type: 2}
   mixerGroupMaster: {fileID: 24300002, guid: c590c7d82ef0b4148b264b5cb53052ba, type: 2}
   streamAudio: 0
+  use64AudioBands: 0
+  audioBand:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  audioBandBuffer:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   audioProfile: 3
-  Channel: 0
+  Channel: 1
 --- !u!82 &192294464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1266,6 +1288,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &222771544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,119 +1441,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232095941}
   m_CullTransparentMesh: 0
---- !u!1 &232440303
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 232440305}
-  - component: {fileID: 232440304}
-  m_Layer: 0
-  m_Name: make Cubes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &232440304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232440303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47e235e6f11b864d84f0bc65bd93874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sampleCubePrefab: {fileID: 129616, guid: 55be7fbee532e9245a6c7a5ff747297f, type: 3}
-  maxScale: 5000
-  cubeMeshRenderers: []
-  material: {fileID: 0}
-  useColor1: 0
-  useColor2: 0
-  colorName1: 
-  colorName2: 
-  gradient1:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  gradient2:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  colorThreshold1: 0
-  colorThreshold2: 0
-  colorMultiplier1: 0
-  colorMultiplier2: 0
---- !u!4 &232440305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232440303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250937435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -1552,6 +1463,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &250937440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -1947,7 +1860,7 @@ GameObject:
   - component: {fileID: 323222784}
   - component: {fileID: 323222786}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: LeftLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,7 +1939,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &323222786
 MonoBehaviour:
@@ -2043,6 +1956,7 @@ MonoBehaviour:
   band: 1
   minIntensity: 0
   maxIntensity: 8
+  viz: {fileID: 192294463}
 --- !u!1 &337587983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,6 +2081,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &354267399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -2237,7 +2153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9a4f8049b1d0832419dad00baf1f52a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2294,6 +2210,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &394396793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2559,76 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55be7fbee532e9245a6c7a5ff747297f, type: 3}
+--- !u!1 &415711887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415711890}
+  - component: {fileID: 415711888}
+  m_Layer: 0
+  m_Name: AudioVizRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &415711888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415711887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36790e7a39c59fc4586896024dee7e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 192294462}
+  audioClip: {fileID: 0}
+  useMicrophone: 1
+  mixerGroupMicrophone: {fileID: 0}
+  mixerGroupMaster: {fileID: 0}
+  streamAudio: 0
+  use64AudioBands: 0
+  audioBand:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  audioBandBuffer:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  audioProfile: 3
+  Channel: 2
+--- !u!4 &415711890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415711887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 234.54277, y: 295.51083, z: -6.4728546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &423243282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,6 +3081,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &622864506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -3240,6 +3230,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &702211977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -3262,6 +3254,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &702211982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -3349,7 +3343,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 730151057}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 192294463}
+        m_MethodName: setClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &730151057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3650,7 +3655,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Pick Wav File
 --- !u!222 &791751400
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3687,6 +3692,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &797596524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821960336}
   m_Layer: 0
-  m_Name: ParamCubes2
+  m_Name: ParamCubesLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3877,7 +3884,7 @@ Transform:
   - {fileID: 1882406606}
   - {fileID: 393221377}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891614022
 GameObject:
@@ -4173,7 +4180,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9a4f8049b1d0832419dad00baf1f52a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4296,7 +4303,7 @@ Transform:
   - {fileID: 384075929}
   - {fileID: 946242898}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &988540058
 PrefabInstance:
@@ -5569,7 +5576,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9a4f8049b1d0832419dad00baf1f52a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6980,7 +6987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474244212}
   m_Layer: 0
-  m_Name: ParamCubes1
+  m_Name: ParamCubesRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7006,7 +7013,7 @@ Transform:
   - {fileID: 2115323132}
   - {fileID: 622864506}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488833126
 GameObject:
@@ -7153,6 +7160,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &1519637767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -7791,6 +7800,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &1768771299
 GameObject:
   m_ObjectHideFlags: 0
@@ -8203,7 +8214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9a4f8049b1d0832419dad00baf1f52a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8498,6 +8509,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &1888852436
 GameObject:
   m_ObjectHideFlags: 0
@@ -8684,6 +8697,8 @@ GameObject:
   - component: {fileID: 1902520862}
   - component: {fileID: 1902520861}
   - component: {fileID: 1902520860}
+  - component: {fileID: 1902520865}
+  - component: {fileID: 1902520864}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8764,6 +8779,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1902520864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902520859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: bbc524be8475a584ca4b01353075ad7d, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &1902520865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902520859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1902520863}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1903898871
 GameObject:
   m_ObjectHideFlags: 0
@@ -8776,7 +8868,7 @@ GameObject:
   - component: {fileID: 1903898872}
   - component: {fileID: 1903898874}
   m_Layer: 0
-  m_Name: Spot Light (1)
+  m_Name: RightLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8855,7 +8947,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1903898874
 MonoBehaviour:
@@ -8869,9 +8961,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f34028b78afe44a87539172979471b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  band: 2
+  band: 1
   minIntensity: 0
   maxIntensity: 8
+  viz: {fileID: 415711888}
 --- !u!1 &1943725817
 GameObject:
   m_ObjectHideFlags: 0
@@ -9120,6 +9213,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &1981293867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -9228,6 +9323,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 192294463}
 --- !u!1 &2087846687
 GameObject:
   m_ObjectHideFlags: 0
@@ -9278,7 +9375,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9a4f8049b1d0832419dad00baf1f52a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9591,6 +9688,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &2115323132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
@@ -9742,6 +9841,8 @@ MonoBehaviour:
   startScale: 5
   scaleMultiplier: 50
   useBuffer: 1
+  useLeft: 0
+  viz: {fileID: 415711888}
 --- !u!4 &2127833394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 55be7fbee532e9245a6c7a5ff747297f,
