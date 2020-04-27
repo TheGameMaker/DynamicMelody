@@ -22,7 +22,7 @@ public class AudioVisualizer : MonoBehaviour {
     public bool streamAudio;
     WasapiAudioSource wasapiSource;
     AudioVisualizationProfile profile;
-    AudioVisualizationStrategy strategy = AudioVisualizationStrategy.Raw;
+    AudioVisualizationStrategy strategy;
 
     //FFT values
    // public float[] freqBandHighest = new float[8]; //might not need
@@ -60,9 +60,17 @@ public class AudioVisualizer : MonoBehaviour {
 	void Awake () {
         audiosource = audioSource.GetComponent<AudioSource>();
         wasapiSource = GetComponent<WasapiAudioSource>();
+        profile = ScriptableObject.CreateInstance<AudioVisualizationProfile>();
+        strategy = AudioVisualizationStrategy.Raw;
         Application.runInBackground = true;
-        AudioProfile(audioProfile);
-        AudioProfile64(audioProfile);
+        if (use64AudioBands)
+        {
+            AudioProfile64(audioProfile);
+        }
+        else
+        {
+            AudioProfile(audioProfile);
+        }
         settings = new SettingsPlayerPref();
         settings.defaultSettings();
         if (streamAudio)
@@ -243,7 +251,8 @@ public class AudioVisualizer : MonoBehaviour {
 
     void GetSpectrumStream()
     {
-        samplesLeft = wasapiSource.GetSpectrumData(strategy, false, profile);
+        //samplesLeft = wasapiSource.GetSpectrumData(strategy, false, profile);
+        samplesRight = wasapiSource.GetSpectrumData(strategy, false, profile);
     }
     void GetSpectrumAudioSource()
     {
