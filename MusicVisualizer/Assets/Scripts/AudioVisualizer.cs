@@ -89,10 +89,10 @@ public class AudioVisualizer : MonoBehaviour {
 
     public void setClip()
     {
-        string p = EditorUtility.OpenFilePanel("Select WAV file", "", "wav");
+       string p = EditorUtility.OpenFilePanel("Select WAV file", "", "wav");
         WWW audioLoader = new WWW("file://" + p);
         while (!audioLoader.isDone)
-            System.Threading.Thread.Sleep(100);
+           System.Threading.Thread.Sleep(100);
 
         Debug.Log(audioLoader.GetAudioClip().name);
         audioClip = audioLoader.GetAudioClip();

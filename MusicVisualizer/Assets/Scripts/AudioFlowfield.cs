@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NoiseFlowfield))]
 //[RequireComponent(typeof(AudioVisualizer))] not sure if we should just put all the components on one object
@@ -87,5 +88,40 @@ public class AudioFlowfield : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void setMaxSpeed(Slider s)
+    {
+        moveSpeedMinMax.y = s.value;
+    }
+
+    public void setMaxRotSpeed(Slider s)
+    {
+        rotateSpeedMinMax.y = s.value;
+    }
+
+    public void setMaxScale(Slider s)
+    {
+        scaleMinMax.y = s.value;
+    }
+
+    public void setColorThresh1(Slider s)
+    {
+        colorThreshold1 = s.value;
+    }
+
+    public void setColorThresh2(Slider s)
+    {
+        colorThreshold2 = s.value;
+    }
+
+    public void setColorMulti1(Slider s)
+    {
+        colorMultiplier1 = s.value;
+    }
+
+    public void setColorMulti2(Slider s)
+    {
+        colorMultiplier2 = s.value;
     }
 }
