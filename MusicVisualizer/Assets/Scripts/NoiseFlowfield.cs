@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoiseFlowfield : MonoBehaviour
 {
@@ -149,5 +150,38 @@ public class NoiseFlowfield : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(this.transform.position + new Vector3((gridSize.x * cellSize) * 0.5f, (gridSize.y * cellSize) * 0.5f, (gridSize.z * cellSize) * 0.5f), 
             new Vector3(gridSize.x * cellSize, gridSize.y * cellSize, gridSize.z * cellSize));
+    }
+
+    public void randomParticles()
+    {
+        foreach (FlowfieldParticle p in particles)
+        {
+            p.audioBand = (int)Random.Range(0, 63);
+        }
+    }
+
+    public void setIncrement(Slider s)
+    {
+        increment = s.value;
+    }
+
+    public void setOffestX(Slider s)
+    {
+        offsetSpeed.x = s.value;
+    }
+
+    public void setOffestY(Slider s)
+    {
+        offsetSpeed.y = s.value;
+    }
+
+    public void setOffestZ(Slider s)
+    {
+        offsetSpeed.z = s.value;
+    }
+
+    public void setParticleNum(Slider s)
+    {
+        amountofParticles = (int) s.value;
     }
 }
