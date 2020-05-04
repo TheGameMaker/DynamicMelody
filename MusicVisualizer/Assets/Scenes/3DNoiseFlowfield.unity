@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 30, y: 15, z: 20}
-  increment: 5
+  increment: 200
   offset: {x: 0, y: 0, z: 0}
   offsetSpeed: {x: 4, y: 1, z: -2}
   particlePrefab: {fileID: 6571718413810276665, guid: 78a784ed94f0b3a4d9c31049f70c4b50,
