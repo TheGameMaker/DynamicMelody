@@ -1148,4 +1148,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/3DNoiseFlowfield.unity
   - Assets/Scenes/3Dcubes.unity
   - Assets/Scenes/circle.unity
-  playerPath: C:/Users/Clark/OneDrive/Desktop/MusicVisualizer.exe
+  playerPath: D:/github/MusicVisualizer/PC build/MusicVisualizer.exe
