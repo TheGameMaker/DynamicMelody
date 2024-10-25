@@ -105,6 +105,7 @@ public class NoiseFlowfield : MonoBehaviour
 
     void ParticleBehavior()
     {
+        int count = 0;
         foreach (FlowfieldParticle p in particles)
         {
             //X edges
@@ -142,6 +143,7 @@ public class NoiseFlowfield : MonoBehaviour
             p.moveSpeed = particleMoveSpeed;
             particleScale = p.scale;
             p.transform.localScale = new Vector3(particleScale, particleScale, particleScale);
+            count++;
         }
     }
 
@@ -158,6 +160,7 @@ public class NoiseFlowfield : MonoBehaviour
         {
             p.audioBand = (int)Random.Range(0, 63);
         }
+        GetComponent<AudioFlowfield>().reAssignMaterials();
     }
 
     public void setIncrement(Slider s)
@@ -183,5 +186,48 @@ public class NoiseFlowfield : MonoBehaviour
     public void setParticleNum(Slider s)
     {
         amountofParticles = (int) s.value;
+
+        if (amountofParticles > particles.Count)
+        {
+            for (int i = particles.Count; i < amountofParticles; i++)
+            {
+                int attempt = 0;
+                while (attempt < 100)
+                {
+                    Vector3 randomPos = new Vector3(
+                        Random.Range(this.transform.position.x, this.transform.position.x + gridSize.x * cellSize),
+                        Random.Range(this.transform.position.y, this.transform.position.y + gridSize.y * cellSize),
+                        Random.Range(this.transform.position.z, this.transform.position.z + gridSize.z * cellSize));
+                    bool isValid = particleSpawnVerification(randomPos);
+
+                    if (isValid)
+                    {
+                        GameObject particleInstance = (GameObject)Instantiate(particlePrefab);
+                        particleInstance.transform.position = randomPos;
+                        particleInstance.transform.parent = this.transform;
+                        particleInstance.transform.localScale = new Vector3(particleScale, particleScale, particleScale);
+                        particles.Add(particleInstance.GetComponent<FlowfieldParticle>());
+                        particleMeshRenderers.Add(particleInstance.GetComponent<MeshRenderer>());
+                        break;
+                    }
+                    else if (!isValid)
+                    {
+                        attempt++;
+                    }
+                }
+            }
+            randomParticles();
+        }
+        else
+        {
+            for (int i = particles.Count - 1; i > amountofParticles; i--)
+            {
+                FlowfieldParticle p = particles[i];
+                particles.Remove(p);
+                particleMeshRenderers.Remove(p.GetComponent<MeshRenderer>());
+                Destroy(p.gameObject);
+            }
+        }
+
     }
 }

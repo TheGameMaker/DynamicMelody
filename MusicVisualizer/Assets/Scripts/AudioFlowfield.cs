@@ -124,4 +124,14 @@ public class AudioFlowfield : MonoBehaviour
     {
         colorMultiplier2 = s.value;
     }
+
+    public void reAssignMaterials()
+    {
+        int pid = 0;
+        foreach (FlowfieldParticle p in noiseFlowfield.particles)
+        {
+            noiseFlowfield.particleMeshRenderers[pid].material = audioMaterials[p.audioBand];
+            pid++;
+        }
+    }
 }
